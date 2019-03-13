@@ -4,7 +4,7 @@ const uuidv4 = require('uuid/v4');
 const methodOverride = require('method-override');
 
 const app = express();
-const port = 8080;
+const port = process.env.port || 3002;
 
 // Use static resources such as css from the public folder
 app.use(express.static('public'));
@@ -60,7 +60,7 @@ const quoteList = () => {
   // by commentsByQuoteId
 
   const movieQuotesComments = quotesArr.map(quoteObj => {
-    movieObj.comments = commentsByQuoteId(quoteId, commentsArr);
+    quoteObj.comments = commentsByQuoteId(quoteObj.id, commentsArr);
     return quoteObj;
   });
 
@@ -91,7 +91,7 @@ app.get('/', (req, res) => {
 // Display the list of quotes
 app.get('/quotes', (req, res) => {
   const quotes = quoteList();
-  res.render('quotes', { quotes });
+  res.render('quote_list', { quotes });
 });
 
 // DISPLAY THE FORM TO CREATE A NEW QUOTE
