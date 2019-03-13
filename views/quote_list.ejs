@@ -1,0 +1,25 @@
+<% include ./partials/_head %>
+
+<h2>Quote List</h2>
+
+<ul>
+<% for (const quoteObj of quotes) { %>
+
+  <li><%= quoteObj.quote %> </li>  
+  
+    <ol>
+      <% for (const commentObj of quoteObj.comments) { %> 
+    
+        <li><%= commentObj.comment %></li>
+
+      <% } %> 
+    </ol>
+
+<% } %> 
+</ul>
+
+<a href="/quotes/new">Add New Quote</a>
+
+</body>
+</html>
+
