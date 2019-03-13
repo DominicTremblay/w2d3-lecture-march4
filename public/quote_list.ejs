@@ -1,0 +1,18 @@
+
+<h2>Quote List</h2>
+
+<ul>
+<% for (const quoteObj of quotes) { %>
+
+  <li><%= quotesObj.quote %> </li>  
+  
+    <ol>
+      <% for (const commentObj of comments) { %> 
+    
+        <li>commentObj.comment</li>
+
+      <% } %> 
+    </ol>
+
+<% } %> 
+</ul>
